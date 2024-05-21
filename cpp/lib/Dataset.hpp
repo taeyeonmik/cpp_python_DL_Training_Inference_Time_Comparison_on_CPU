@@ -1,3 +1,6 @@
+#ifndef DATASET_HPP
+#define DATASET_HPP
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -6,7 +9,6 @@
 #include <torch/script.h>
 #include <torch/torch.h>
 #include <cstdint>
-
 
 class CustomDataset : public torch::data::Dataset<CustomDataset> {
 private:
@@ -37,8 +39,8 @@ public:
 
 class Mnist {
 public:
-    int num_images, num_rows, num_cols;
-    int num_labels;
+    int32_t num_images, num_rows, num_cols;
+    int32_t num_labels;
     torch::Tensor ImgTensor;
     torch::Tensor LabelTensor;
 
@@ -122,3 +124,5 @@ public:
         return tensor.clone(); // Clone to ensure the tensor owns its memory
     }
 };
+
+#endif
